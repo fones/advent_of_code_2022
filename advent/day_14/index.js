@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { keypress, printCanvas, clearCanvas } = require('../helpers')
+const { keypress, printCanvas, clearCanvas } = require('./helpers')
 
 const input = fs.readFileSync('./input.txt', { encoding: 'utf8' })
 
@@ -12,16 +12,13 @@ const lines = input
     .map(xy => xy.split(',')
       .map(e => parseInt(e))))
 
-const maxX = Math.max(...lines.map(line => Math.max(...line.map(cor => cor[0]))))
-const minX = Math.min(...lines.map(line => Math.min(...line.map(cor => cor[0]))))
+let maxX = Math.max(...lines.map(line => Math.max(...line.map(cor => cor[0]))))
+let minX = Math.min(...lines.map(line => Math.min(...line.map(cor => cor[0]))))
 
-const maxY = Math.max(...lines.map(line => Math.max(...line.map(cor => cor[1]))))
-const minY = Math.min(...lines.map(line => Math.min(...line.map(cor => cor[1]))))
+let maxY = Math.max(...lines.map(line => Math.max(...line.map(cor => cor[1]))))
+let minY = Math.min(...lines.map(line => Math.min(...line.map(cor => cor[1]))))
 
-console.log('X[min,max]', minX, maxX);
-console.log('Y[min,max]', minY, maxY);
-
-const canvas = new Array(maxX + 1).fill().map(row => 
+let canvas = new Array(maxX + 1).fill().map(row => 
     new Array(maxY + 1).fill().map(c => '.')
   )
 
@@ -106,7 +103,7 @@ const newDrop = () => {
   }
 }
 
-const simulate = /*async*/ () => {
+const simulatePartOne = /*async*/ () => {
   let dropCount = 0
   
   while (++dropCount) {
@@ -132,8 +129,59 @@ const simulate = /*async*/ () => {
   return dropCount - 1 // not count the one that fall
 }
 
-// console.log('Final canvas')
-// clearCanvas(canvas)
+console.log('PART ONE DROP COUNT', simulatePartOne())
 
-console.log('PART ONE DROP COUNT', simulate())
+// console.log('Final canvas of part one')
+// printCanvas(canvas, [minX, minY], [maxX, maxY])
 
+maxY = maxY + 2
+
+minX = 0
+maxX = maxX * 2 // let use 2x
+
+canvas = new Array(maxX + 1).fill().map(row => 
+  new Array(maxY + 1).fill().map(c => '.')
+)
+
+lines.forEach(line => {
+  for (let i = 1; i < line.length; i++) {
+    drawLine(line[i-1], line[i])
+  }
+})
+
+// Draw bottom line
+drawLine([0, maxY], [maxX, maxY])
+
+// printCanvas(canvas, [minX, minY], [maxX, maxY])
+
+const simulatePartTwo = /*async*/ () => {
+  let dropCount = 0
+  
+  while (++dropCount) {
+    
+    const drop = newDrop()
+    
+    while (!drop.isRest()) {
+      // clearCanvas(canvas)
+      // printCanvas(canvas, [minX, minY], [maxX, maxY], drop.xy())
+      // await keypress()
+      drop.move()
+    }
+
+    drop.print()
+
+    // Rest on the start point
+    if (drop.isRest() && drop.xy()[1] == 0) {
+      break
+    }
+  }
+
+  // printCanvas(canvas, [minX, minY], [maxX, maxY])
+  
+  return dropCount
+}
+
+console.log('PART TWO DROP COUNT', simulatePartTwo())
+
+// console.log('Final canvas of part two')
+// printCanvas(canvas, [minX, minY], [maxX, maxY])
