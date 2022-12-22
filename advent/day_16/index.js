@@ -212,3 +212,102 @@ console.timeEnd('greedy')
 console.time('backtracking')
 console.log('TOTAL PRESSURE [backtracking]', partOneBacktracking())
 console.timeEnd('backtracking')
+
+// NOT WORKING
+const partTwo = () => {
+  let time = 26
+  const p1 = valves['AA']
+  const p2 = valves['AA']
+  const cache = {}
+  let cc = 0
+
+  const maxPressure = (p1, p2, alreadyOpen, timeLeft) => {
+    if (++cc % 1000000 == 0) {
+      console.log(`${cc}`);
+    }
+    // No time left
+    if (timeLeft <= 0) {
+      return 0
+    }
+    // Check cache
+    const key = `${[p1.name, p2.name].sort().join(',')}-${timeLeft}-${alreadyOpen.sort().join(',')}`
+    const cacheData = cache[key]
+    if (cacheData) {
+      return cacheData
+    }
+    let max = 0
+
+    // If they are on the same valve
+    if (p1.name == p2.name) {
+
+      // If the valve is not open already and got positive rate
+      if (!alreadyOpen.includes(p1.name) && p1.rate > 0) {
+        const pressure = (timeLeft - 1) * p1.rate
+        // One of the open valve, second goes further
+        p1.tunnels.forEach(nextValve => {
+          max = Math.max(
+            max,
+            pressure + maxPressure(p1, nextValve, [...alreadyOpen, p1.name], timeLeft - 1)
+          )
+        })
+      }
+
+      p1.tunnels.forEach(nextP1 => {
+        p2.tunnels.forEach(nextP2 => {
+          max = Math.max(
+            max,
+            maxPressure(nextP1, nextP2, [...alreadyOpen], timeLeft - 1)
+          )
+        })
+      })
+      
+     } else { // They are on different valve
+
+      // If the valve is not open already and got positive rate
+      if (!alreadyOpen.includes(p1.name) && p1.rate > 0) {
+        const pressure = (timeLeft - 1) * p1.rate
+        // One of the open valve, second goes further
+        p2.tunnels.forEach(nextValve => {
+          max = Math.max(
+            max,
+            pressure + maxPressure(p1, nextValve, [...alreadyOpen, p1.name], timeLeft - 1)
+          )
+        })
+      }
+
+      // If the valve is not open already and got positive rate
+      if (!alreadyOpen.includes(p2.name) && p2.rate > 0) {
+        const pressure = (timeLeft - 1) * p2.rate
+        // One of the open valve, second goes further
+        p1.tunnels.forEach(nextValve => {
+          max = Math.max(
+            max,
+            pressure + maxPressure(nextValve, p2, [...alreadyOpen, p2.name], timeLeft - 1)
+          )
+        })
+      }
+
+      p1.tunnels.forEach(nextP1 => {
+        p2.tunnels.forEach(nextP2 => {
+          max = Math.max(
+            max,
+            maxPressure(nextP1, nextP2, [...alreadyOpen], timeLeft - 1)
+          )
+        })
+      })
+
+    }
+    
+   
+    // Save cache
+    cache[key] = max
+    // Return max from given vales
+    return max
+  }
+
+  return maxPressure(p1, p2, [], time)
+}
+
+// console.time('backtracking')
+// console.log('TOTAL PRESSURE WITH ELEPHANT', partTwo())
+// console.timeEnd('backtracking')

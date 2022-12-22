@@ -9,6 +9,7 @@ Try yourself: https://adventofcode.com/
 ```
       --------Part 1---------   --------Part 2---------
 Day       Time    Rank  Score       Time    Rank  Score
+ 22   02:06:42    3310      0          -       -      -
  16       >24h   18495      0          -       -      -
  15   17:03:17   25211      0       >24h   25125      0
  14       >24h   31259      0       >24h   32443      0
@@ -29,9 +30,10 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 # Problems
 
-Here are list of task I got problem with and I look for help online:
+Here are list of task I got problem with and I look for help online. ❌ means I didn't finish this task.
 
 * day `11`
   * part `2` - way too big integers, module trick needed
 * day `16`
   * part `1` - tried with greedy algorithm, fast but not return the best results possible `1595` vs `1651` on test data, check some github repos and try backtracking
+  * part `2` ❌ - backtracking but after `20 000 000 000` iteration still not found anything. Need more work on that.
