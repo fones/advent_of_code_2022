@@ -10,6 +10,8 @@ Try yourself: https://adventofcode.com/
       --------Part 1---------   --------Part 2---------
 Day       Time    Rank  Score       Time    Rank  Score
  22   02:06:42    3310      0          -       -      -
+ 18       >24h   25467      0          -       -      -
+ 17       >24h   21933      0          -       -      -
  16       >24h   18495      0          -       -      -
  15   17:03:17   25211      0       >24h   25125      0
  14       >24h   31259      0       >24h   32443      0
@@ -30,10 +32,22 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 # Problems
 
-Here are list of task I got problem with and I look for help online. ❌ means I didn't finish this task.
+Here are list of task I got problem with and I look for help online. 
+
+* ✅ means I finish this task with help from community
+* ❌ means I didn't finish this task and skipped for now
+* 🤔 means I still working on that task
+
+### Tasks
 
 * day `11`
-  * part `2` - way too big integers, module trick needed
+  * part `2` ✅ - way too big integers, module trick needed
 * day `16`
-  * part `1` - tried with greedy algorithm, fast but not return the best results possible `1595` vs `1651` on test data, check some github repos and try backtracking
+  * part `1` ✅ - tried with greedy algorithm, fast but not return the best results possible `1595` vs `1651` on test data, check some github repos and try backtracking
   * part `2` ❌ - backtracking but after `20 000 000 000` iteration still not found anything. Need more work on that.
+* day `17`
+  * part `2` 🤔 - I found patter in test input, still looking for pattern in main input
+* day `18`
+  * part `2` 🤔 - filling with water/steam in progress
+* day `22`
+  * part `2` 🤔 - traverse around the cube, still thinking about this
