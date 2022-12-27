@@ -10,6 +10,7 @@ Try yourself: https://adventofcode.com/
       --------Part 1---------   --------Part 2---------
 Day       Time    Rank  Score       Time    Rank  Score
  22   02:06:42    3310      0          -       -      -
+ 21       >24h   21569      0       >24h   18901      0
  18       >24h   25467      0          -       -      -
  17       >24h   21933      0          -       -      -
  16       >24h   18495      0          -       -      -
@@ -32,11 +33,11 @@ Day       Time    Rank  Score       Time    Rank  Score
 
 # Problems
 
-Here are list of task I got problem with and I look for help online. 
+Here are list of task I got problem with.
 
 * ✅ means I finish this task with help from community
-* ❌ means I didn't finish this task and skipped for now
-* 🤔 means I still working on that task
+* ❌ means I didn't finish this task and skip it
+* 🤔 means I still working on that task, no external help yet
 
 ### Tasks
 
@@ -49,5 +50,7 @@ Here are list of task I got problem with and I look for help online.
   * part `2` 🤔 - I found patter in test input, still looking for pattern in main input
 * day `18`
   * part `2` 🤔 - filling with water/steam in progress
+* day `20`
+  * part `1` 🤔 - easy splice() job - working on this ;-)
 * day `22`
   * part `2` 🤔 - traverse around the cube, still thinking about this
