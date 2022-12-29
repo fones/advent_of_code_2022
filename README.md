@@ -11,7 +11,7 @@ Try yourself: https://adventofcode.com/
 Day       Time    Rank  Score       Time    Rank  Score
  22   02:06:42    3310      0          -       -      -
  21       >24h   21569      0       >24h   18901      0
- 18       >24h   25467      0          -       -      -
+ 18       >24h   25467      0       >24h   21676      0
  17       >24h   21933      0          -       -      -
  16       >24h   18495      0          -       -      -
  15   17:03:17   25211      0       >24h   25125      0
@@ -48,8 +48,6 @@ Here are list of task I got problem with.
   * part `2` ❌ - backtracking but after `20 000 000 000` iteration still not found anything. Need more work on that.
 * day `17`
   * part `2` 🤔 - I found patter in test input, still looking for pattern in main input
-* day `18`
-  * part `2` 🤔 - filling with water/steam in progress
 * day `20`
   * part `1` 🤔 - easy splice() job - working on this ;-)
 * day `22`
